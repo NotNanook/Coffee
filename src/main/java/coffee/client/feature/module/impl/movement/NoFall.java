@@ -65,28 +65,8 @@ public class NoFall extends Module {
     }
 
     @Override
-    public void enable() {
-
-    }
-
-    @Override
-    public void disable() {
-
-    }
-
-    @Override
     public String getContext() {
         return mode.getValue().name();
-    }
-
-    @Override
-    public void onWorldRender(MatrixStack matrices) {
-
-    }
-
-    @Override
-    public void onHudRender() {
-
     }
 
     public enum Mode {

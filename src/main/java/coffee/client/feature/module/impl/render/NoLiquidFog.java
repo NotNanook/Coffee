@@ -16,34 +16,4 @@ public class NoLiquidFog extends Module {
         super("NoLiquidFog", "Removes the fogging effects of when you're in water or lava", ModuleType.RENDER);
         INSTANCE = this;
     }
-
-    @Override
-    public void tick() {
-
-    }
-
-    @Override
-    public void enable() {
-
-    }
-
-    @Override
-    public void disable() {
-
-    }
-
-    @Override
-    public String getContext() {
-        return null;
-    }
-
-    @Override
-    public void onWorldRender(MatrixStack matrices) {
-
-    }
-
-    @Override
-    public void onHudRender() {
-
-    }
 }

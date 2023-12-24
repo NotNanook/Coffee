@@ -121,11 +121,6 @@ public class LoadingScreen extends AAScreen implements FastTickable {
             }
         }
         Renderer.R2D.renderQuad(stack, new Color(0f, 0f, 0f, (float) opacity), 0, 0, width, height);
-
-        double anim = (System.currentTimeMillis() % 1000) / 1000d;
-        String dots = ".".repeat((int) Math.max(Math.ceil(anim * 3), 1));
-        FontRenderers.getRenderer()
-            .drawString(stack, "Loading textures" + dots, 3, height - FontRenderers.getRenderer().getFontHeight() - 3, 0.7f, 0.7f, 0.7f, (float) opacity);
         stack.push();
         double texDim = 32;
         stack.translate(width / 2d, height / 2d, 0);

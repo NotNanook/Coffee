@@ -90,19 +90,4 @@ public class EntityFly extends Module {
             lastRide.setNoGravity(false);
         }
     }
-
-    @Override
-    public String getContext() {
-        return null;
-    }
-
-    @Override
-    public void onWorldRender(MatrixStack matrices) {
-
-    }
-
-    @Override
-    public void onHudRender() {
-
-    }
 }

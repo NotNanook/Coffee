@@ -86,18 +86,8 @@ public class Freecam extends Module {
     }
 
     @Override
-    public String getContext() {
-        return null;
-    }
-
-    @Override
     public void onWorldRender(MatrixStack matrices) {
         Objects.requireNonNull(client.player).setSwimming(false);
         client.player.setPose(EntityPose.STANDING);
-    }
-
-    @Override
-    public void onHudRender() {
-
     }
 }

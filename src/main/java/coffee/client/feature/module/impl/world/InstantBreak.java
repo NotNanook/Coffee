@@ -84,18 +84,8 @@ public class InstantBreak extends Module {
     }
 
     @Override
-    public void enable() {
-
-    }
-
-    @Override
     public void disable() {
         positions.clear();
-    }
-
-    @Override
-    public String getContext() {
-        return null;
     }
 
     @Override
@@ -103,11 +93,6 @@ public class InstantBreak extends Module {
         for (Vec3d position : new ArrayList<>(positions)) {
             Renderer.R3D.renderOutline(matrices, Utils.getCurrentRGB(), position, new Vec3d(1, 1, 1));
         }
-    }
-
-    @Override
-    public void onHudRender() {
-
     }
 
     public enum Priority {

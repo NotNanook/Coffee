@@ -34,23 +34,4 @@ public class ClickGUI extends Module {
     public void enable() {
         t = 2;
     }
-
-    @Override
-    public void disable() {
-    }
-
-    @Override
-    public String getContext() {
-        return null;
-    }
-
-    @Override
-    public void onWorldRender(MatrixStack matrices) {
-
-    }
-
-    @Override
-    public void onHudRender() {
-
-    }
 }

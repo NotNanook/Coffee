@@ -22,34 +22,9 @@ public class ClientSettings extends Module {
     }
 
     @Override
-    public void tick() {
-
-    }
-
-    @Override
     public void enable() {
         setEnabled(false);
         Notification.create(5000, "ClientSettings", Notification.Type.INFO, "No need to enable this");
-    }
-
-    @Override
-    public void disable() {
-
-    }
-
-    @Override
-    public String getContext() {
-        return null;
-    }
-
-    @Override
-    public void onWorldRender(MatrixStack matrices) {
-
-    }
-
-    @Override
-    public void onHudRender() {
-
     }
 
     public enum ToggleMode {

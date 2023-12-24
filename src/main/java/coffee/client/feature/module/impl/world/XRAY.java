@@ -53,11 +53,6 @@ public class XRAY extends Module {
     }
 
     @Override
-    public void tick() {
-
-    }
-
-    @Override
     public void enable() {
         CoffeeMain.client.worldRenderer.reload();
     }
@@ -65,20 +60,5 @@ public class XRAY extends Module {
     @Override
     public void disable() {
         CoffeeMain.client.worldRenderer.reload();
-    }
-
-    @Override
-    public String getContext() {
-        return null;
-    }
-
-    @Override
-    public void onWorldRender(MatrixStack matrices) {
-
-    }
-
-    @Override
-    public void onHudRender() {
-
     }
 }

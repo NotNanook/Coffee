@@ -24,11 +24,6 @@ public class ShulkerDeflector extends Module {
         super("ShulkerDeflector", "Automatically reflects shulker's projectiles", ModuleType.COMBAT);
     }
 
-    @Override
-    public void tick() {
-
-    }
-
     boolean inHitRange(Entity attacker, Entity target) {
         return attacker.getCameraPosVec(1f).distanceTo(target.getPos().add(0, target.getHeight() / 2, 0)) <= Objects.requireNonNull(CoffeeMain.client.interactionManager)
             .getReachDistance();
@@ -44,30 +39,5 @@ public class ShulkerDeflector extends Module {
                 Objects.requireNonNull(CoffeeMain.client.interactionManager).attackEntity(CoffeeMain.client.player, sbe);
             }
         }
-    }
-
-    @Override
-    public void enable() {
-
-    }
-
-    @Override
-    public void disable() {
-
-    }
-
-    @Override
-    public String getContext() {
-        return null;
-    }
-
-    @Override
-    public void onWorldRender(MatrixStack matrices) {
-
-    }
-
-    @Override
-    public void onHudRender() {
-
     }
 }

@@ -25,34 +25,4 @@ public class MoreChatHistory extends Module {
     public int getHistSize() {
         return (int) (size.getValue() + 0);
     }
-
-    @Override
-    public void tick() {
-
-    }
-
-    @Override
-    public void enable() {
-
-    }
-
-    @Override
-    public void disable() {
-
-    }
-
-    @Override
-    public String getContext() {
-        return null;
-    }
-
-    @Override
-    public void onWorldRender(MatrixStack matrices) {
-
-    }
-
-    @Override
-    public void onHudRender() {
-
-    }
 }

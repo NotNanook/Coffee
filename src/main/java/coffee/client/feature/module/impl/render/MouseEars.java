@@ -14,33 +14,4 @@ public class MouseEars extends Module {
     public MouseEars() {
         super("MouseEars", "Shows the Deadmau5 skin ears for every player", ModuleType.RENDER);
     }
-
-    @Override
-    public void tick() {
-
-    }
-
-    @Override
-    public void enable() {
-    }
-
-    @Override
-    public void disable() {
-
-    }
-
-    @Override
-    public String getContext() {
-        return null;
-    }
-
-    @Override
-    public void onWorldRender(MatrixStack matrices) {
-
-    }
-
-    @Override
-    public void onHudRender() {
-
-    }
 }

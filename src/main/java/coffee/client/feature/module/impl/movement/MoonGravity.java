@@ -24,29 +24,4 @@ public class MoonGravity extends Module {
         CoffeeMain.client.player.addVelocity(0, 0.0568000030517578, 0);
         // yea that's literally it
     }
-
-    @Override
-    public void enable() {
-
-    }
-
-    @Override
-    public void disable() {
-
-    }
-
-    @Override
-    public String getContext() {
-        return null;
-    }
-
-    @Override
-    public void onWorldRender(MatrixStack matrices) {
-
-    }
-
-    @Override
-    public void onHudRender() {
-
-    }
 }

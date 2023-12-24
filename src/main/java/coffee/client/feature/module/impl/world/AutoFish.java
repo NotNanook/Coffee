@@ -69,29 +69,6 @@ public class AutoFish extends Module {
         }
     }
 
-    @Override
-    public void enable() {
-    }
-
-    @Override
-    public void disable() {
-    }
-
-    @Override
-    public String getContext() {
-        return null;
-    }
-
-    @Override
-    public void onWorldRender(MatrixStack matrices) {
-
-    }
-
-    @Override
-    public void onHudRender() {
-
-    }
-
     private void click() {
         CoffeeMain.client.player.networkHandler.sendPacket(new PlayerInteractItemC2SPacket(Hand.MAIN_HAND, Utils.increaseAndCloseUpdateManager(CoffeeMain.client.world)));
     }

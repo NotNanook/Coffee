@@ -27,10 +27,13 @@ public abstract class Module {
     static int lastNotification = -1;
     public final ModuleConfig config;
     public final DoubleSetting keybind;
+    @Getter
     private final String name;
+    @Getter
     private final String description;
     private final ModuleType moduleType;
     private final BooleanSetting toasts;
+    @Getter
     private boolean enabled = false;
     @Getter
     @Setter
@@ -67,44 +70,28 @@ public abstract class Module {
         return moduleType;
     }
 
-    public String getName() {
-        return name;
-    }
+    public void tick() {}
 
-    public String getDescription() {
-        return description;
-    }
+    public void enable() {}
 
-    public abstract void tick();
+    public void disable() {}
 
-    public abstract void enable();
+    public void onWorldRender(MatrixStack matrices) {}
 
-    public abstract void disable();
+    public void onHudRender() {}
 
-    public abstract String getContext();
+    public void postInit() {}
 
-    public abstract void onWorldRender(MatrixStack matrices);
+    public void onFastTick() {}
 
-    public abstract void onHudRender();
+    public void onFastTick_NWC() {}
 
-    public void postInit() {
-
-    }
-
-    public void onFastTick() {
-
-    }
-
-    public void onFastTick_NWC() {
-
+    public String getContext() {
+        return null;
     }
 
     public void toggle() {
         setEnabled(!enabled);
-    }
-
-    public boolean isEnabled() {
-        return enabled;
     }
 
     public void setEnabled(boolean enabled) {

@@ -59,25 +59,6 @@ public class BlockTagViewer extends Module {
     }
 
     @Override
-    public void enable() {
-    }
-
-    @Override
-    public void disable() {
-
-    }
-
-    @Override
-    public String getContext() {
-        return null;
-    }
-
-    @Override
-    public void onWorldRender(MatrixStack matrices) {
-
-    }
-
-    @Override
     public void onFastTick() {
         for (Entry entry : new ArrayList<>(entries)) {
             double c = 0.05;

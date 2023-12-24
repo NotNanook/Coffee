@@ -99,26 +99,6 @@ public class SuperheroFX extends Module {
         return Arrays.stream(words.split(",")).map(String::trim).toList().toArray(String[]::new);
     }
 
-    @Override
-    public void tick() {
-
-    }
-
-    @Override
-    public void enable() {
-
-    }
-
-    @Override
-    public void disable() {
-
-    }
-
-    @Override
-    public String getContext() {
-        return null;
-    }
-
 
     @Override
     public void onFastTick() {
@@ -228,11 +208,6 @@ public class SuperheroFX extends Module {
                 });
             }
         }
-    }
-
-    @Override
-    public void onHudRender() {
-
     }
 
     @AllArgsConstructor

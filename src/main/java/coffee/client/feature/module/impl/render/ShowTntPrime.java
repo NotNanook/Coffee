@@ -95,20 +95,6 @@ public class ShowTntPrime extends Module {
     }
 
     @Override
-    public void tick() {
-    }
-
-    @Override
-    public void enable() {
-
-    }
-
-    @Override
-    public void disable() {
-
-    }
-
-    @Override
     public String getContext() {
         return String.valueOf(i2iamp.size());
     }
@@ -159,11 +145,6 @@ public class ShowTntPrime extends Module {
             90,
             360 * progress
         );
-
-    }
-
-    @Override
-    public void onHudRender() {
 
     }
 }

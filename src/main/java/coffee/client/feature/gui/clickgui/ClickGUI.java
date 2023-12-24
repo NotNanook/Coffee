@@ -11,6 +11,7 @@ import coffee.client.feature.gui.element.Element;
 import coffee.client.feature.gui.element.impl.ClickableTextElement;
 import coffee.client.feature.gui.screen.HelpScreen;
 import coffee.client.feature.gui.screen.base.AAScreen;
+import coffee.client.feature.gui.theme.ThemeManager;
 import coffee.client.feature.module.ModuleType;
 import coffee.client.helper.font.FontRenderers;
 import coffee.client.helper.manager.ShaderManager;
@@ -46,8 +47,6 @@ public class ClickGUI extends AAScreen {
     double tooltipX, tooltipY;
     String tooltipContent;
 
-    ClickableTextElement help;
-
     public static void reInit() {
         if (instance != null) {
             instance.initWidgets();
@@ -82,14 +81,6 @@ public class ClickGUI extends AAScreen {
 
     @Override
     protected void initInternal() {
-        help = new ClickableTextElement(
-            5,
-            client.getWindow().getScaledHeight() - FontRenderers.getRenderer().getFontHeight() - 5,
-            "Click me for help",
-            FontRenderers.getRenderer(),
-            () -> client.setScreen(new HelpScreen(this)),
-            0xCCCCCC
-        );
         closing = false;
         if (initialized) {
             return;
@@ -224,11 +215,6 @@ public class ClickGUI extends AAScreen {
     }
 
     @Override
-    public boolean mouseClicked(double mouseX, double mouseY, int button) {
-        return help.mouseClicked(mouseX, mouseY, button) || super.mouseClicked(mouseX, mouseY, button);
-    }
-
-    @Override
     public void renderInternal(MatrixStack stack, int mouseX, int mouseY, float delta) {
         List<Element> elcpy = new ArrayList<>(getElements());
         Collections.reverse(elcpy);
@@ -243,7 +229,7 @@ public class ClickGUI extends AAScreen {
             double textWid = FontRenderers.getRenderer().getStringWidth(oldSearchTerm);
             Renderer.R2D.renderRoundedQuad(
                 stack,
-                new Color(20, 20, 20),
+                ThemeManager.getMainTheme().getModule(),
                 width - pad - pad - textWid - pad,
                 height - pad - hei,
                 width - pad,
@@ -264,7 +250,7 @@ public class ClickGUI extends AAScreen {
             double width = Arrays.stream(split).map(s -> FontRenderers.getRenderer().getStringWidth(s)).max(Comparator.comparingDouble(value -> value)).orElse(0f) + 4f;
             double tooltipX = Math.min(this.tooltipX, this.width - 4 - width);
 
-            Renderer.R2D.renderRoundedQuadWithShadow(stack, new Color(30, 30, 30), tooltipX, tooltipY, tooltipX + width, tooltipY + height, 2, 6);
+            Renderer.R2D.renderRoundedQuadWithShadow(stack, ThemeManager.getMainTheme().getTooltip(), tooltipX, tooltipY, tooltipX + width, tooltipY + height, 2, 6);
             double y = 0;
             for (String s : split) {
                 FontRenderers.getRenderer().drawString(stack, s, tooltipX + 2, tooltipY + 1 + y, 0xFFFFFF);
@@ -273,6 +259,5 @@ public class ClickGUI extends AAScreen {
 
             tooltipContent = null;
         }
-        help.render(stack, mouseX, mouseY);
     }
 }

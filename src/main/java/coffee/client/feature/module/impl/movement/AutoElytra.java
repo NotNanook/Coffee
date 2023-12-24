@@ -49,31 +49,11 @@ public class AutoElytra extends Module {
     }
 
     @Override
-    public void enable() {
-
-    }
-
-    @Override
-    public void disable() {
-
-    }
-
-    @Override
     public String getContext() {
         float fd = Objects.requireNonNull(CoffeeMain.client.player).fallDistance;
         if (fd > fallDist.getMin()) {
             return Utils.Math.roundToDecimal(fd, 1) + " | " + fallDist.getValue();
         }
         return null;
-    }
-
-    @Override
-    public void onWorldRender(MatrixStack matrices) {
-
-    }
-
-    @Override
-    public void onHudRender() {
-
     }
 }

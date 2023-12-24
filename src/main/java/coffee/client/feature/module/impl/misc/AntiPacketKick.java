@@ -14,34 +14,4 @@ public class AntiPacketKick extends Module {
     public AntiPacketKick() {
         super("AntiPacketKick", "Prevents a client disconnect caused by an internal exception", ModuleType.MISC);
     }
-
-    @Override
-    public void tick() {
-
-    }
-
-    @Override
-    public void enable() {
-
-    }
-
-    @Override
-    public void disable() {
-
-    }
-
-    @Override
-    public String getContext() {
-        return null;
-    }
-
-    @Override
-    public void onWorldRender(MatrixStack matrices) {
-
-    }
-
-    @Override
-    public void onHudRender() {
-
-    }
 }

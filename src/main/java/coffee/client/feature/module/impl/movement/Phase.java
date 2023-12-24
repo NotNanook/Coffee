@@ -47,10 +47,6 @@ public class Phase extends Module {
         }
     }
 
-    @Override
-    public void tick() {
-    }
-
     public boolean getNoClipState(PlayerEntity pe) {
         return this.isEnabled() && pe.getAbilities().flying;
     }
@@ -61,11 +57,6 @@ public class Phase extends Module {
         CoffeeMain.client.player.setOnGround(false);
         CoffeeMain.client.player.fallDistance = 0;
         CoffeeMain.client.player.setVelocity(0, 0, 0);
-    }
-
-    @Override
-    public void disable() {
-
     }
 
     @Override
@@ -80,10 +71,5 @@ public class Phase extends Module {
             CoffeeMain.client.player.setOnGround(false);
             CoffeeMain.client.player.fallDistance = 0;
         }
-    }
-
-    @Override
-    public void onHudRender() {
-
     }
 }

@@ -14,34 +14,4 @@ public class PortalGUI extends Module {
     public PortalGUI() {
         super("PortalGUI", "Allows you to open GUIs while being inside a portal", ModuleType.MISC);
     }
-
-    @Override
-    public void tick() {
-
-    }
-
-    @Override
-    public void enable() {
-
-    }
-
-    @Override
-    public void disable() {
-
-    }
-
-    @Override
-    public String getContext() {
-        return null;
-    }
-
-    @Override
-    public void onWorldRender(MatrixStack matrices) {
-
-    }
-
-    @Override
-    public void onHudRender() {
-
-    }
 }

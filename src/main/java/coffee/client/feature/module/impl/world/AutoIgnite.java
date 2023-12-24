@@ -77,29 +77,4 @@ public class AutoIgnite extends Module {
 
         CoffeeMain.client.getNetworkHandler().sendPacket(new UpdateSelectedSlotC2SPacket(prevSlot));
     }
-
-    @Override
-    public void enable() {
-
-    }
-
-    @Override
-    public void disable() {
-
-    }
-
-    @Override
-    public String getContext() {
-        return null;
-    }
-
-    @Override
-    public void onWorldRender(MatrixStack matrices) {
-
-    }
-
-    @Override
-    public void onHudRender() {
-
-    }
 }

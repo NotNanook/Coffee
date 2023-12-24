@@ -91,31 +91,6 @@ public class LongJump extends Module {
         }
     }
 
-    @Override
-    public void enable() {
-
-    }
-
-    @Override
-    public void disable() {
-
-    }
-
-    @Override
-    public String getContext() {
-        return null;
-    }
-
-    @Override
-    public void onWorldRender(MatrixStack matrices) {
-
-    }
-
-    @Override
-    public void onHudRender() {
-
-    }
-
     public enum FocusType {
         Velocity, Direction
     }

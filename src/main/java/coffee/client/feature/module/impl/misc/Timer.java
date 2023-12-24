@@ -29,27 +29,7 @@ public class Timer extends Module {
     }
 
     @Override
-    public void enable() {
-
-    }
-
-    @Override
     public void disable() {
         Utils.setClientTps(20f);
-    }
-
-    @Override
-    public String getContext() {
-        return null;
-    }
-
-    @Override
-    public void onWorldRender(MatrixStack matrices) {
-
-    }
-
-    @Override
-    public void onHudRender() {
-
     }
 }

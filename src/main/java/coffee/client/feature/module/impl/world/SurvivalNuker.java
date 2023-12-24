@@ -152,11 +152,6 @@ public class SurvivalNuker extends Module {
     }
 
     @Override
-    public String getContext() {
-        return null;
-    }
-
-    @Override
     public void onWorldRender(MatrixStack matrices) {
         for (BlockPos render : renders) {
             Vec3d vp = new Vec3d(render.getX(), render.getY(), render.getZ());
@@ -168,20 +163,6 @@ public class SurvivalNuker extends Module {
                 1000
             );
         }
-    }
-
-    @Override
-    public void enable() {
-
-    }
-
-    @Override
-    public void disable() {
-    }
-
-    @Override
-    public void onHudRender() {
-
     }
 
     public enum Mode {

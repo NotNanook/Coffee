@@ -20,11 +20,6 @@ public class Fullbright extends Module {
         super("Fullbright", "Allows you to see in complete darkness", ModuleType.RENDER);
     }
 
-    @Override
-    public void tick() {
-
-    }
-
     @SuppressWarnings("unchecked")
     @Override
     public void enable() {
@@ -36,20 +31,5 @@ public class Fullbright extends Module {
     @Override
     public void disable() {
         CoffeeMain.client.options.getGamma().setValue(og);
-    }
-
-    @Override
-    public String getContext() {
-        return null;
-    }
-
-    @Override
-    public void onWorldRender(MatrixStack matrices) {
-
-    }
-
-    @Override
-    public void onHudRender() {
-
     }
 }

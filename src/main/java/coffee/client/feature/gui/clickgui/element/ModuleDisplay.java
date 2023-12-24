@@ -7,6 +7,7 @@ package coffee.client.feature.gui.clickgui.element;
 
 import coffee.client.feature.gui.clickgui.ClickGUI;
 import coffee.client.feature.gui.element.Element;
+import coffee.client.feature.gui.theme.ThemeManager;
 import coffee.client.feature.module.Module;
 import coffee.client.helper.font.FontRenderers;
 import coffee.client.helper.font.adapter.impl.RendererFontAdapter;
@@ -142,7 +143,7 @@ public class ModuleDisplay extends Element {
             ); // leave one pixel at the bottom
             Renderer.R2D.renderRoundedQuad(
                 stack,
-                new Color(9, 162, 104),
+                ThemeManager.getMainTheme().getAccent(),
                 getPositionX() + 2,
                 getPositionY() + 2,
                 getPositionX() + 2 + 1.5,

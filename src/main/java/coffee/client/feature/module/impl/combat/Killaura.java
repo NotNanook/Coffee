@@ -343,11 +343,6 @@ public class Killaura extends Module {
     }
 
     @Override
-    public void enable() {
-
-    }
-
-    @Override
     public void disable() {
         if (BaritoneHelper.isPaused()) {
             BaritoneHelper.resume("killaura");
@@ -361,17 +356,6 @@ public class Killaura extends Module {
         data.put("Ran", getRange());
         data.put("Tar", targets.size());
         return data.keySet().stream().map(s -> s + ":" + data.get(s).toString()).collect(Collectors.joining(" | "));
-    }
-
-    @Override
-    public void onWorldRender(MatrixStack matrices) {
-
-
-    }
-
-    @Override
-    public void onHudRender() {
-
     }
 
     public enum AttackFilter {

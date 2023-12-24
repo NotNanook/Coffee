@@ -295,16 +295,6 @@ public class Flight extends Module {
         return String.valueOf(mode.getValue());
     }
 
-    @Override
-    public void onWorldRender(MatrixStack matrices) {
-
-    }
-
-    @Override
-    public void onHudRender() {
-
-    }
-
     public enum FlightMode {
         Vanilla, Static, _3D, Jetpack, Walk
     }

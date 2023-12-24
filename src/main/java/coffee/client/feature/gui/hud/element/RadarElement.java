@@ -6,6 +6,7 @@
 package coffee.client.feature.gui.hud.element;
 
 import coffee.client.CoffeeMain;
+import coffee.client.feature.gui.theme.ThemeManager;
 import coffee.client.feature.module.ModuleRegistry;
 import coffee.client.feature.module.ModuleType;
 import coffee.client.feature.module.impl.render.Radar;
@@ -35,7 +36,7 @@ public class RadarElement extends HudElement {
     public void renderIntern(MatrixStack stack) {
         Radar radar = ModuleRegistry.getByClass(Radar.class);
         if (radar.isEnabled()) {
-            Renderer.R2D.renderRoundedQuadWithShadow(stack, new Color(10, 10, 20, 200), 0, 0, width, height, 5, 20);
+            Renderer.R2D.renderRoundedQuadWithShadow(stack, ThemeManager.getMainTheme().getModule(), 0, 0, width, height, 5, 20);
             double maxDistToRender = radar.iScale * 16;
             Vec3d ppos = Utils.getInterpolatedEntityPosition(CoffeeMain.client.player);
             double originX = ppos.x;

@@ -25,37 +25,7 @@ public class Radar extends Module {
     }
 
     @Override
-    public void tick() {
-
-    }
-
-    @Override
-    public void enable() {
-
-    }
-
-    @Override
-    public void disable() {
-
-    }
-
-    @Override
-    public String getContext() {
-        return null;
-    }
-
-    @Override
-    public void onWorldRender(MatrixStack matrices) {
-
-    }
-
-    @Override
     public void onFastTick() {
         iScale = Transitions.transition(iScale, scale.getValue(), 30, 0);
-    }
-
-    @Override
-    public void onHudRender() {
-
     }
 }

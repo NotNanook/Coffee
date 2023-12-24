@@ -20,23 +20,8 @@ public class BoatPhase extends Module {
     }
 
     @Override
-    public void tick() {
-
-    }
-
-    @Override
     public void enable() {
         Utils.Logging.message("To use BoatPhase, go into a boat, move it all the way towards a wall and drop sand on the boat with you in it");
-    }
-
-    @Override
-    public void disable() {
-
-    }
-
-    @Override
-    public String getContext() {
-        return null;
     }
 
     @Override
@@ -52,10 +37,5 @@ public class BoatPhase extends Module {
         CoffeeMain.client.player.getVehicle().noClip = true;
         CoffeeMain.client.player.getVehicle().setNoGravity(true);
         CoffeeMain.client.player.noClip = true;
-    }
-
-    @Override
-    public void onHudRender() {
-
     }
 }

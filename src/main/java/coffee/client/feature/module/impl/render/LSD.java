@@ -25,33 +25,8 @@ public class LSD extends Module {
     }
 
     @Override
-    public void tick() {
-
-    }
-
-    @Override
     public void enable() {
         this.startTime = System.currentTimeMillis();
-    }
-
-    @Override
-    public void disable() {
-
-    }
-
-    @Override
-    public String getContext() {
-        return null;
-    }
-
-    @Override
-    public void onWorldRender(MatrixStack matrices) {
-
-    }
-
-    @Override
-    public void onHudRender() {
-
     }
 
     public void draw() {

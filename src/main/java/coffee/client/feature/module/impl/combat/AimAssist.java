@@ -147,21 +147,6 @@ public class AimAssist extends Module {
         aimAtTarget();
     }
 
-    @Override
-    public void enable() {
-
-    }
-
-    @Override
-    public void disable() {
-
-    }
-
-    @Override
-    public String getContext() {
-        return null;
-    }
-
     void aimAtTarget() {
         if (!aimInstant.getValue()) {
             Rotations.lookAtPositionSmooth(le.getPos().add(0, le.getHeight() / 2d, 0), (float) (laziness.getValue() + 0));
@@ -179,11 +164,6 @@ public class AimAssist extends Module {
             float h = le.getHeight();
             Renderer.R3D.renderLine(matrices, Utils.getCurrentRGB(), origin, origin.add(0, h, 0));
         }
-    }
-
-    @Override
-    public void onHudRender() {
-
     }
 
     public enum PriorityMode {

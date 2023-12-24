@@ -256,10 +256,6 @@ public class CaveMapper extends Module {
     }
 
     @Override
-    public void tick() {
-    }
-
-    @Override
     public void enable() {
         scannedBlocks.clear();
         toScan.clear();
@@ -281,10 +277,6 @@ public class CaveMapper extends Module {
                     blockPos)
                 .getBlock()))
             .count() / scannedBlocks.size() * 100, 2) + "%D";
-    }
-
-    @Override
-    public void disable() {
     }
 
     @Override
@@ -372,9 +364,5 @@ public class CaveMapper extends Module {
                 new Vec3d(1, 1, 1)
             );
         }
-    }
-
-    @Override
-    public void onHudRender() {
     }
 }

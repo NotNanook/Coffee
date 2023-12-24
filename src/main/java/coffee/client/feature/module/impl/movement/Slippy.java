@@ -17,34 +17,4 @@ public class Slippy extends Module {
     public Slippy() {
         super("Slippy", "Makes every block slippy like ice", ModuleType.MOVEMENT);
     }
-
-    @Override
-    public void tick() {
-
-    }
-
-    @Override
-    public void enable() {
-
-    }
-
-    @Override
-    public void disable() {
-
-    }
-
-    @Override
-    public String getContext() {
-        return null;
-    }
-
-    @Override
-    public void onWorldRender(MatrixStack matrices) {
-
-    }
-
-    @Override
-    public void onHudRender() {
-
-    }
 }

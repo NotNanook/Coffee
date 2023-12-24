@@ -104,11 +104,6 @@ public class AutoLavacast extends Module {
     }
 
     @Override
-    public void tick() {
-
-    }
-
-    @Override
     public void enable() {
         if (original == null) {
             original = CoffeeMain.client.player.input;
@@ -126,22 +121,12 @@ public class AutoLavacast extends Module {
     }
 
     @Override
-    public String getContext() {
-        return null;
-    }
-
-    @Override
     public void onWorldRender(MatrixStack matrices) {
         BlockPos next = getNextPosition();
         Renderer.R3D.renderOutline(matrices, Color.RED, Vec3d.of(start), new Vec3d(1, 0.01, 1));
         if (next != null) {
             Renderer.R3D.renderOutline(matrices, Color.BLUE, Vec3d.of(next), new Vec3d(1, 1, 1));
         }
-    }
-
-    @Override
-    public void onHudRender() {
-
     }
 
     public enum Mode {

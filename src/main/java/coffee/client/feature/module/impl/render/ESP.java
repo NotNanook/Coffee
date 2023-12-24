@@ -62,26 +62,6 @@ public class ESP extends Module {
         return outlineMode == Mode.Rect;
     }
 
-    @Override
-    public void tick() {
-
-    }
-
-    @Override
-    public void enable() {
-
-    }
-
-    @Override
-    public void disable() {
-
-    }
-
-    @Override
-    public String getContext() {
-        return null;
-    }
-
     public boolean shouldRenderEntity(Entity le) {
         if (le instanceof PlayerEntity) {
             return attackFilter.isSet(AttackFilter.Players);
@@ -255,11 +235,6 @@ public class ESP extends Module {
             bb.vertex(x + vert[0] * xMul, y + vert[1] * yMul, 0f).color(r, g, b, a).next();
         }
         BufferRenderer.drawWithGlobalProgram(bb.end());
-    }
-
-    @Override
-    public void onHudRender() {
-
     }
 
     public enum AttackFilter {

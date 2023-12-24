@@ -94,26 +94,6 @@ public class BowAimbot extends Module {
         return max.orElse(null);
     }
 
-    @Override
-    public void tick() {
-
-    }
-
-    @Override
-    public void enable() {
-
-    }
-
-    @Override
-    public void disable() {
-
-    }
-
-    @Override
-    public String getContext() {
-        return null;
-    }
-
     private boolean shouldAim() {
         ItemStack mainHandStack = client.player.getMainHandStack();
         Item item = mainHandStack.getItem();

@@ -69,21 +69,6 @@ public class Swing extends Module {
     }
 
     @Override
-    public void enable() {
-
-    }
-
-    @Override
-    public void disable() {
-
-    }
-
-    @Override
-    public String getContext() {
-        return null;
-    }
-
-    @Override
     public void onWorldRender(MatrixStack matrices) {
         if (swinging == null || CoffeeMain.client.player == null) {
             return;
@@ -94,10 +79,5 @@ public class Swing extends Module {
         Vec3d eSource = Utils.getInterpolatedEntityPosition(CoffeeMain.client.player);
         Renderer.R3D.renderFilled(matrices, ThemeManager.getMainTheme().getInactive(), cringe.add(.5, .5, .5).subtract(.25, .25, .25), new Vec3d(.5, .5, .5));
         Renderer.R3D.renderLine(matrices, line, eSource, cringe2);
-    }
-
-    @Override
-    public void onHudRender() {
-
     }
 }

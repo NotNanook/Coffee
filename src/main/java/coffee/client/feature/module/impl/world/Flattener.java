@@ -146,27 +146,12 @@ public class Flattener extends Module {
     }
 
     @Override
-    public void disable() {
-
-    }
-
-    @Override
-    public String getContext() {
-        return null;
-    }
-
-    @Override
     public void onWorldRender(MatrixStack matrices) {
         RenderSystem.defaultBlendFunc();
         RenderSystem.enableBlend();
         for (RenderEntry render : renders) {
             Renderer.R3D.renderFilled(matrices, render.color(), Vec3d.of(render.pos()), render.dimensions());
         }
-    }
-
-    @Override
-    public void onHudRender() {
-
     }
 
     record RenderEntry(BlockPos pos, Vec3d dimensions, Color color) {

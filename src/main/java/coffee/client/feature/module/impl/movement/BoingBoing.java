@@ -20,34 +20,4 @@ public class BoingBoing extends Module {
     public BoingBoing() {
         super("BoingBoing", "Makes every block a slime block", ModuleType.MOVEMENT);
     }
-
-    @Override
-    public void tick() {
-
-    }
-
-    @Override
-    public void enable() {
-
-    }
-
-    @Override
-    public void disable() {
-
-    }
-
-    @Override
-    public String getContext() {
-        return null;
-    }
-
-    @Override
-    public void onWorldRender(MatrixStack matrices) {
-
-    }
-
-    @Override
-    public void onHudRender() {
-
-    }
 }

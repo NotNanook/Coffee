@@ -30,29 +30,4 @@ public class AutoAttack extends Module {
             .attackEntity(CoffeeMain.client.player, ((EntityHitResult) CoffeeMain.client.crosshairTarget).getEntity());
         CoffeeMain.client.player.swingHand(Hand.MAIN_HAND);
     }
-
-    @Override
-    public void enable() {
-
-    }
-
-    @Override
-    public void disable() {
-
-    }
-
-    @Override
-    public String getContext() {
-        return null;
-    }
-
-    @Override
-    public void onWorldRender(MatrixStack matrices) {
-
-    }
-
-    @Override
-    public void onHudRender() {
-
-    }
 }

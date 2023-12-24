@@ -30,30 +30,10 @@ public class Step extends Module {
     }
 
     @Override
-    public void enable() {
-
-    }
-
-    @Override
     public void disable() {
         if (CoffeeMain.client.player == null || CoffeeMain.client.getNetworkHandler() == null) {
             return;
         }
         Objects.requireNonNull(client.player).setStepHeight(0.6f);
-    }
-
-    @Override
-    public String getContext() {
-        return null;
-    }
-
-    @Override
-    public void onWorldRender(MatrixStack matrices) {
-
-    }
-
-    @Override
-    public void onHudRender() {
-
     }
 }

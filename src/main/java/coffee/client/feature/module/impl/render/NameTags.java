@@ -27,17 +27,6 @@ public class NameTags extends Module {
         super("NameTags", "Shows information about players above them", ModuleType.RENDER);
     }
 
-
-    @Override
-    public void tick() {
-
-    }
-
-    @Override
-    public void enable() {
-
-    }
-
     public void render(MatrixStack stack, AbstractClientPlayerEntity entity, Text text) {
         String t = text.getString();
 
@@ -111,16 +100,6 @@ public class NameTags extends Module {
     }
 
     @Override
-    public void disable() {
-
-    }
-
-    @Override
-    public String getContext() {
-        return null;
-    }
-
-    @Override
     public void onWorldRender(MatrixStack matrices) {
         // sort the entire thing based on the most distant to the least distant because thats how rendering works
         for (AbstractClientPlayerEntity player : client.world.getPlayers()
@@ -130,10 +109,5 @@ public class NameTags extends Module {
             .toList()) {
             render(matrices, player, player.getName());
         }
-    }
-
-    @Override
-    public void onHudRender() {
-
     }
 }

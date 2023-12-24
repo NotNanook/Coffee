@@ -42,11 +42,6 @@ public class Decimator extends Module {
         super("Decimator", "Transforms a radius around you to void", ModuleType.WORLD);
     }
 
-    @Override
-    public void tick() {
-
-    }
-
     void run() {
         for (double ox = -radius.getValue(); ox < radius.getValue(); ox += 4) {
             for (double oz = -radius.getValue(); oz < radius.getValue(); oz += 4) {
@@ -87,11 +82,6 @@ public class Decimator extends Module {
     }
 
     @Override
-    public String getContext() {
-        return null;
-    }
-
-    @Override
     public void onWorldRender(MatrixStack matrices) {
         if (latest != null) {
             Renderer.R3D.renderFilled(
@@ -107,10 +97,5 @@ public class Decimator extends Module {
                 new Vec3d(latest.x + .5, CoffeeMain.client.world.getTopY(), latest.z + .5)
             );
         }
-    }
-
-    @Override
-    public void onHudRender() {
-
     }
 }

@@ -13,34 +13,4 @@ public class UnfocusedCpu extends Module {
     public UnfocusedCpu() {
         super("UnfocusedCpu", "Prevents rendering of the game when the window is not focused", ModuleType.RENDER);
     }
-
-    @Override
-    public void tick() {
-
-    }
-
-    @Override
-    public void enable() {
-
-    }
-
-    @Override
-    public void disable() {
-
-    }
-
-    @Override
-    public String getContext() {
-        return null;
-    }
-
-    @Override
-    public void onWorldRender(MatrixStack matrices) {
-
-    }
-
-    @Override
-    public void onHudRender() {
-
-    }
 }

@@ -68,19 +68,4 @@ public class Zoom extends Module {
         enabledTime = System.currentTimeMillis();
         client.options.getMouseSensitivity().setValue(msens);
     }
-
-    @Override
-    public String getContext() {
-        return null;
-    }
-
-    @Override
-    public void onWorldRender(MatrixStack matrices) {
-
-    }
-
-    @Override
-    public void onHudRender() {
-
-    }
 }

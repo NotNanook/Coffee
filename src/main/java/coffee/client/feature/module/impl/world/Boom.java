@@ -134,28 +134,8 @@ public class Boom extends Module {
     }
 
     @Override
-    public void enable() {
-
-    }
-
-    @Override
-    public void disable() {
-
-    }
-
-    @Override
     public String getContext() {
         return (int) (this.power.getValue() + 0) + "!".repeat((int) Math.floor(this.power.getValue() / 20d));
-    }
-
-    @Override
-    public void onWorldRender(MatrixStack matrices) {
-
-    }
-
-    @Override
-    public void onHudRender() {
-
     }
 
     public enum Mode {

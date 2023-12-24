@@ -45,11 +45,6 @@ public class BlockHighlighting extends Module {
         }
     }
 
-    @Override
-    public void tick() {
-
-    }
-
     public void renderEntry(MatrixStack stack, Long2ObjectMap.Entry<SortedSet<BlockBreakingInfo>> e) {
         SortedSet<BlockBreakingInfo> bbrs = e.getValue();
         if (bbrs == null || bbrs.isEmpty()) {
@@ -80,30 +75,10 @@ public class BlockHighlighting extends Module {
     }
 
     @Override
-    public void enable() {
-
-    }
-
-    @Override
-    public void disable() {
-
-    }
-
-    @Override
-    public String getContext() {
-        return null;
-    }
-
-    @Override
     public void onWorldRender(MatrixStack matrices) {
         for (Long2ObjectMap.Entry<SortedSet<BlockBreakingInfo>> sortedSetEntry : ((IWorldRendererMixin) CoffeeMain.client.worldRenderer).getBlockBreakingProgressions()
             .long2ObjectEntrySet()) {
             renderEntry(matrices, sortedSetEntry);
         }
-    }
-
-    @Override
-    public void onHudRender() {
-
     }
 }

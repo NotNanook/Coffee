@@ -33,21 +33,6 @@ public class Tracers extends Module {
     }
 
     @Override
-    public void tick() {
-
-    }
-
-    @Override
-    public void enable() {
-
-    }
-
-    @Override
-    public void disable() {
-
-    }
-
-    @Override
     public String getContext() {
         if (CoffeeMain.client.world == null || CoffeeMain.client.player == null) {
             return null;
@@ -100,10 +85,5 @@ public class Tracers extends Module {
 
     boolean isEntityApplicable(Entity v) {
         return v instanceof PlayerEntity && players.getValue() || entities.getValue();
-    }
-
-    @Override
-    public void onHudRender() {
-
     }
 }

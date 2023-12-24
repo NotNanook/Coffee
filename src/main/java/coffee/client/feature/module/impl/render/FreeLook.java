@@ -96,18 +96,8 @@ public class FreeLook extends Module {
     }
 
     @Override
-    public String getContext() {
-        return null;
-    }
-
-    @Override
     public void onWorldRender(MatrixStack matrices) {
         client.options.setPerspective(Perspective.THIRD_PERSON_BACK);
-    }
-
-    @Override
-    public void onHudRender() {
-
     }
 
     @Override

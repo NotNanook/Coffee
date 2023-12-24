@@ -57,11 +57,6 @@ public class DiscordRPC extends Module {
         actuallyUpdate();
     }
 
-    @Override
-    public void tick() {
-
-    }
-
     void setState() {
         RichPresence rp = new RichPresence();
         rp.setDetails(details.getValue());
@@ -95,20 +90,5 @@ public class DiscordRPC extends Module {
     @Override
     public void disable() {
         DiscordIPC.stop();
-    }
-
-    @Override
-    public String getContext() {
-        return null;
-    }
-
-    @Override
-    public void onWorldRender(MatrixStack matrices) {
-
-    }
-
-    @Override
-    public void onHudRender() {
-
     }
 }

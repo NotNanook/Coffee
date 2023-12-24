@@ -32,16 +32,6 @@ public class Test extends Module {
     }
 
     @Override
-    public void disable() {
-
-    }
-
-    @Override
-    public String getContext() {
-        return null;
-    }
-
-    @Override
     public void onWorldRender(MatrixStack matrices) {
         if (pf == null || pf.startEntry == null) {
             return;
@@ -52,14 +42,5 @@ public class Test extends Module {
             entry = entry.next;
         }
 
-    }
-
-    @Override
-    public void onHudRender() {
-
-    }
-
-    @Override
-    public void tick() {
     }
 }

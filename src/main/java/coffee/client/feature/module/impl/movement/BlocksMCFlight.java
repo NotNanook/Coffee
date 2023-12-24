@@ -49,16 +49,6 @@ public class BlocksMCFlight extends Module {
     }
 
     @Override
-    public void disable() {
-
-    }
-
-    @Override
-    public String getContext() {
-        return null;
-    }
-
-    @Override
     public void onWorldRender(MatrixStack matrices) {
 
         Vec3d ppos = Utils.getInterpolatedEntityPosition(CoffeeMain.client.player);
@@ -76,11 +66,6 @@ public class BlocksMCFlight extends Module {
             circle.animProg += 0.005;
         }
         super.onFastTick();
-    }
-
-    @Override
-    public void onHudRender() {
-
     }
 
     static class AnimatedCircle {

@@ -21,34 +21,6 @@ public class AutoSign extends Module {
         super("AutoSign", "Automatically write signs when looking at them", ModuleType.WORLD);
     }
 
-    @Override
-    public void tick() {
-
-    }
-
-    @Override
-    public void enable() {
-    }
-
-    @Override
-    public void disable() {
-    }
-
-    @Override
-    public String getContext() {
-        return null;
-    }
-
-    @Override
-    public void onWorldRender(MatrixStack matrices) {
-
-    }
-
-    @Override
-    public void onHudRender() {
-
-    }
-
     public String[] getText() {
         return new String[] { ss1.getValue(), ss2.getValue(), ss3.getValue(), ss4.getValue() };
     }

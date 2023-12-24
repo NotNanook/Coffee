@@ -25,31 +25,11 @@ public class Trail extends Module {
     }
 
     @Override
-    public void tick() {
-
-    }
-
-    @Override
     public void onFastTick() {
         positions.add(Utils.getInterpolatedEntityPosition(CoffeeMain.client.player));
         while (positions.size() > 1000) {
             positions.remove(0);
         }
-    }
-
-    @Override
-    public void enable() {
-
-    }
-
-    @Override
-    public void disable() {
-
-    }
-
-    @Override
-    public String getContext() {
-        return null;
     }
 
     @Override
@@ -75,11 +55,6 @@ public class Trail extends Module {
             }
             Renderer.R3D.renderLine(matrices, Color.getHSBColor(progress, 0.6f, 1f), before, vec3d);
         }
-
-    }
-
-    @Override
-    public void onHudRender() {
 
     }
 }

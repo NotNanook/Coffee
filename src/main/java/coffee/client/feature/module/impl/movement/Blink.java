@@ -40,16 +40,6 @@ public class Blink extends Module {
     }
 
     @Override
-    public void tick() {
-
-    }
-
-    @Override
-    public void enable() {
-
-    }
-
-    @Override
     public void disable() {
         if (client.player == null || client.getNetworkHandler() == null) {
             queue.clear();
@@ -64,16 +54,6 @@ public class Blink extends Module {
     @Override
     public String getContext() {
         return String.valueOf(queue.size());
-    }
-
-    @Override
-    public void onWorldRender(MatrixStack matrices) {
-
-    }
-
-    @Override
-    public void onHudRender() {
-
     }
 
     public enum Mode {

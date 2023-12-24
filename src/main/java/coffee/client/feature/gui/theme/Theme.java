@@ -14,9 +14,11 @@ public interface Theme {
 
     Color getModule();
 
-    Color getConfig();
-
     Color getActive();
 
     Color getInactive();
+
+    Color getTooltip();
+
+    Color getSpeed();
 }

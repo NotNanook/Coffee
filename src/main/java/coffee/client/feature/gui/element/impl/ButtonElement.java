@@ -7,6 +7,7 @@ package coffee.client.feature.gui.element.impl;
 
 import coffee.client.feature.gui.HasSpecialCursor;
 import coffee.client.feature.gui.element.Element;
+import coffee.client.feature.gui.theme.ThemeManager;
 import coffee.client.helper.font.FontRenderers;
 import coffee.client.helper.render.Cursor;
 import coffee.client.helper.render.Renderer;
@@ -75,7 +76,7 @@ public class ButtonElement extends Element implements HasSpecialCursor {
         matrices.scale(MathHelper.lerp(animProgress, 1f, 1.01f), MathHelper.lerp(animProgress, 1f, 1.01f), 1f);
         double originX = -width / 2d;
         double originY = -height / 2d;
-        Renderer.R2D.renderRoundedQuad(matrices, new Color(30, 30, 30), originX, originY, width / 2d, height / 2d, Math.min(height / 2d, radius), 10);
+        Renderer.R2D.renderRoundedQuad(matrices, ThemeManager.getMainTheme().getModule(), originX, originY, width / 2d, height / 2d, Math.min(height / 2d, radius), 10);
         if (animProgress != 0) {
             Renderer.R2D.renderRoundedShadow(
                 matrices,

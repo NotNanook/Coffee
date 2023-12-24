@@ -139,21 +139,6 @@ public class StorageHighlighter extends Module {
     }
 
     @Override
-    public void enable() {
-
-    }
-
-    @Override
-    public void disable() {
-
-    }
-
-    @Override
-    public String getContext() {
-        return null;
-    }
-
-    @Override
     public void onWorldRender(MatrixStack matrices) {
         for (BlockPos position : positions) {
             Block b = client.world.getBlockState(position).getBlock();
@@ -163,10 +148,5 @@ public class StorageHighlighter extends Module {
                 Renderer.R3D.renderFadingBlock(c, Renderer.Util.modify(c, -1, -1, -1, 100).darker(), Vec3d.of(position), new Vec3d(1, 1, 1), 500);
             }
         }
-    }
-
-    @Override
-    public void onHudRender() {
-
     }
 }

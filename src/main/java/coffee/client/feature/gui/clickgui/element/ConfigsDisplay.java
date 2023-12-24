@@ -13,6 +13,7 @@ import coffee.client.feature.gui.element.impl.ButtonElement;
 import coffee.client.feature.gui.element.impl.FlexLayoutElement;
 import coffee.client.feature.gui.element.impl.TextFieldElement;
 import coffee.client.feature.gui.notifications.hudNotif.HudNotification;
+import coffee.client.feature.gui.theme.ThemeManager;
 import coffee.client.helper.config.ConfigInputFile;
 import coffee.client.helper.config.ConfigOutputStream;
 import coffee.client.helper.font.FontRenderers;
@@ -116,7 +117,7 @@ public class ConfigsDisplay extends Element {
         layout.updateScroller();
         Renderer.R2D.renderRoundedQuadWithShadow(
             stack,
-            new Color(20, 20, 20),
+            ThemeManager.getMainTheme().getModule(),
             getPositionX(),
             getPositionY(),
             getPositionX() + getWidth(),

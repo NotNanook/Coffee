@@ -102,10 +102,6 @@ public class TabGui extends Module {
         tbp.cursor = makeSureInBounds(tbp.cursor, tbp.entries.size());
     }
 
-    @Override
-    public void onHudRender() {
-    }
-
     public void render(MatrixStack stack) {
         if (!this.isEnabled()) {
             return;
@@ -121,7 +117,7 @@ public class TabGui extends Module {
             double height = tabPane.entries.size() * oneHeight + padOuter * 2;
 
             double width = padOuter + scrollerWidth + 2 + Math.ceil(widest.width + 1) + 3;
-            Renderer.R2D.renderRoundedQuadWithShadow(stack, ThemeManager.getMainTheme().getConfig(), 0, 0, width, height, 3, 20);
+            Renderer.R2D.renderRoundedQuadWithShadow(stack, ThemeManager.getMainTheme().getModule(), 0, 0, width, height, 3, 20);
             Renderer.R2D.renderRoundedQuad(stack, new Color(60, 60, 60), padOuter, yOffset + scrollerYOffset, width - padOuter, yOffset + scrollerYEnd, 2, 10);
 
             double lastEnabledStackHeight = 0;
@@ -165,31 +161,6 @@ public class TabGui extends Module {
             }
             stack.translate(width + 5, 0, 0); // x offset
         }
-    }
-
-    @Override
-    public void tick() {
-
-    }
-
-    @Override
-    public void enable() {
-
-    }
-
-    @Override
-    public void disable() {
-
-    }
-
-    @Override
-    public String getContext() {
-        return null;
-    }
-
-    @Override
-    public void onWorldRender(MatrixStack matrices) {
-
     }
 
     @Data

@@ -73,22 +73,7 @@ public class FakeHacker extends Module {
     }
 
     @Override
-    public void disable() {
-
-    }
-
-    @Override
     public String getContext() {
         return target == null ? null : target.getEntityName();
-    }
-
-    @Override
-    public void onWorldRender(MatrixStack matrices) {
-
-    }
-
-    @Override
-    public void onHudRender() {
-
     }
 }

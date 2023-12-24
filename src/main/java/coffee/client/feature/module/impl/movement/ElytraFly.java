@@ -32,16 +32,6 @@ public class ElytraFly extends Module {
     }
 
     @Override
-    public void enable() {
-
-    }
-
-    @Override
-    public void disable() {
-
-    }
-
-    @Override
     public void tick() {
 
         ItemStack chestplate = CoffeeMain.client.player.getEquippedStack(EquipmentSlot.CHEST);
@@ -73,20 +63,5 @@ public class ElytraFly extends Module {
                 }
             }
         }
-    }
-
-    @Override
-    public String getContext() {
-        return null;
-    }
-
-    @Override
-    public void onWorldRender(MatrixStack matrices) {
-
-    }
-
-    @Override
-    public void onHudRender() {
-
     }
 }

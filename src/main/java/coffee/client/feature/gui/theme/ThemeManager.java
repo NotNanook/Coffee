@@ -5,12 +5,14 @@
 
 package coffee.client.feature.gui.theme;
 
+import coffee.client.feature.gui.theme.impl.BlackWhite;
 import coffee.client.feature.gui.theme.impl.Ocean;
 
 public class ThemeManager {
     static final Theme bestThemeEver = new Ocean();
+    static final Theme betterTheme = new BlackWhite();
 
     public static Theme getMainTheme() {
-        return bestThemeEver;
+        return betterTheme;
     }
 }

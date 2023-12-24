@@ -30,11 +30,6 @@ public class Boost extends Module {
     }
 
     @Override
-    public void tick() {
-
-    }
-
-    @Override
     public void enable() {
         if (CoffeeMain.client.player == null || CoffeeMain.client.getNetworkHandler() == null) {
             return;
@@ -46,26 +41,6 @@ public class Boost extends Module {
         } else {
             CoffeeMain.client.player.setVelocity(newVelocity);
         }
-    }
-
-    @Override
-    public void disable() {
-
-    }
-
-    @Override
-    public String getContext() {
-        return null;
-    }
-
-    @Override
-    public void onWorldRender(MatrixStack matrices) {
-
-    }
-
-    @Override
-    public void onHudRender() {
-
     }
 
     public enum Mode {

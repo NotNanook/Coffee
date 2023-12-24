@@ -48,11 +48,6 @@ public class Backtrack extends Module {
         }
     }
 
-    @Override
-    public void tick() {
-
-    }
-
     void moveTo(PositionEntry e) {
         CoffeeMain.client.player.updatePosition(e.pos.x, e.pos.y, e.pos.z);
         CoffeeMain.client.player.setPitch((float) e.pitch);
@@ -111,11 +106,6 @@ public class Backtrack extends Module {
         for (int i = Math.max(1, entries.size() - 30); i < entries.size(); i++) {
             Renderer.R3D.renderLine(matrices, Color.RED, entries.get(i - 1).pos(), entries.get(i).pos());
         }
-    }
-
-    @Override
-    public void onHudRender() {
-
     }
 
     record PositionEntry(Vec3d pos, Vec3d vel, double pitch, double yaw) {

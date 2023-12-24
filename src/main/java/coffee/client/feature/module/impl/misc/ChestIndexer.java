@@ -206,11 +206,6 @@ public class ChestIndexer extends Module {
     }
 
     @Override
-    public void enable() {
-
-    }
-
-    @Override
     public void disable() {
         stacks.clear();
     }
@@ -236,11 +231,6 @@ public class ChestIndexer extends Module {
         for (Entry lastVisResult : lastVisResults) {
             Renderer.R3D.renderEdged(matrices, FILL_COLOR, OUTLINE_COLOR, Vec3d.of(lastVisResult.bp), DIMENSIONS);
         }
-    }
-
-    @Override
-    public void onHudRender() {
-
     }
 
     record Entry(long e, BlockPos bp) {

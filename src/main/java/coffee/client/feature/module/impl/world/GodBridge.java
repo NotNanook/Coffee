@@ -55,10 +55,6 @@ public class GodBridge extends Module {
     }
 
     @Override
-    public void enable() {
-    }
-
-    @Override
     public void disable() {
         if (isReady != null) {
             isReady.duration = 0;
@@ -68,16 +64,6 @@ public class GodBridge extends Module {
     @Override
     public String getContext() {
         return isReady() ? "Ready" : "Not ready";
-    }
-
-    @Override
-    public void onWorldRender(MatrixStack matrices) {
-
-    }
-
-    @Override
-    public void onHudRender() {
-
     }
 
     @Override

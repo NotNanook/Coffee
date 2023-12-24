@@ -94,26 +94,6 @@ public class Hud extends Module {
     }
 
     @Override
-    public void enable() {
-
-    }
-
-    @Override
-    public void disable() {
-
-    }
-
-    @Override
-    public String getContext() {
-        return null;
-    }
-
-    @Override
-    public void onWorldRender(MatrixStack matrices) {
-
-    }
-
-    @Override
     public void onHudRender() {
         if (CoffeeMain.client.getNetworkHandler() == null) {
             return;
@@ -204,9 +184,11 @@ public class Hud extends Module {
 
         String desc = String.join(" | ", values);
 
-        double width = pad + newWidth + 5 + FontRenderers.getRenderer().getStringWidth(desc) + pad;
+        double width = pad + newWidth + FontRenderers.getRenderer().getStringWidth(desc) + pad;
+        if(!values.isEmpty()) width += 7; // This is so that the Icon looks better when there is nothing else enabled
+
         double height = pad * 2 + Math.max(newHeight, FontRenderers.getRenderer().getFontHeight());
-        Renderer.R2D.renderRoundedQuadWithShadow(ms, ThemeManager.getMainTheme().getConfig(), 0, 0, width, height, 5, 20);
+        Renderer.R2D.renderRoundedQuadWithShadow(ms, ThemeManager.getMainTheme().getModule(), 0, 0, width, height, 5, 20);
         Texture.ICON.bind();
         Renderer.R2D.renderTexture(ms, pad, height / 2d - newHeight / 2d, newWidth, newHeight, 0, 0, newWidth, newHeight, newWidth, newHeight);
         FontRenderers.getRenderer().drawString(ms, desc, pad + newWidth + 5, height / 2d - FontRenderers.getRenderer().getMarginHeight() / 2d, 0xFFFFFF);

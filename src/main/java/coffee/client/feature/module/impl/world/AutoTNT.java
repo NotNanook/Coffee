@@ -108,15 +108,6 @@ public class AutoTNT extends Module {
     }
 
     @Override
-    public void enable() {
-    }
-
-    @Override
-    public void disable() {
-
-    }
-
-    @Override
     public String getContext() {
         return missingTntAck ? "Missing tnt!" : null;
     }
@@ -159,10 +150,5 @@ public class AutoTNT extends Module {
                 }
             }
         }
-    }
-
-    @Override
-    public void onHudRender() {
-
     }
 }
