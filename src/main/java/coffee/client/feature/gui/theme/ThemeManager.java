@@ -12,7 +12,5 @@ public class ThemeManager {
     static final Theme bestThemeEver = new Ocean();
     static final Theme betterTheme = new BlackWhite();
 
-    public static Theme getMainTheme() {
-        return betterTheme;
-    }
+    public static Theme getMainTheme() {return betterTheme;}
 }

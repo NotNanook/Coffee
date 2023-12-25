@@ -5,6 +5,7 @@
 
 package coffee.client.feature.module.impl.misc;
 
+import coffee.client.CoffeeMain;
 import coffee.client.feature.module.Module;
 import coffee.client.feature.module.ModuleType;
 import coffee.client.helper.util.Timer;
@@ -14,11 +15,7 @@ import net.minecraft.client.network.PlayerListEntry;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.world.GameMode;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 public class GamemodeAlert extends Module {
     static Map<UUID, GameMode> seen = new HashMap<>();
@@ -46,7 +43,7 @@ public class GamemodeAlert extends Module {
                 seen.put(id, gm);
             } else {
                 GameMode gameMode = seen.get(id);
-                if (gameMode != gm) {
+                if (gameMode != gm && !Objects.equals(CoffeeMain.client.player.getName().getString(), playerListEntry.getProfile().getName())) {
                     String dName = playerListEntry.getDisplayName() != null ? playerListEntry.getDisplayName().getString() : playerListEntry.getProfile().getName();
                     Utils.Logging.warn(String.format(
                         "[Gamemode change] %s§r just changed their gamemode: %s -> %s",

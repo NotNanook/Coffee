@@ -14,9 +14,7 @@ import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.c2s.play.ClientCommandC2SPacket;
 
 public class AntiHunger extends Module {
-    public AntiHunger() {
-        super("AntiHunger", "Reduces hunger by pretending you're not sprinting", ModuleType.RENDER);
-    }
+    public AntiHunger() {super("AntiHunger", "Reduces hunger by pretending you're not sprinting", ModuleType.MOVEMENT);}
 
     @MessageSubscription
     void onPacket(PacketEvent.Sent s) {

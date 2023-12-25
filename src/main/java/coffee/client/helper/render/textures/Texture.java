@@ -21,7 +21,8 @@ public interface Texture {
         "https://raw.githubusercontent.com/Coffee-Client/Resources/master/ss_actions.png",
         Utils.loadFromResources("sprite/actions.json")
     );
-    DirectTexture BACKGROUND = new DirectTexture("https://raw.githubusercontent.com/Coffee-Client/Resources/master/background.png");
+    //DirectTexture BACKGROUND = new DirectTexture("https://raw.githubusercontent.com/Coffee-Client/Resources/master/background.png");
+    ResourceTexture BACKGROUND = new ResourceTexture("assets/coffee/background.jpg");
     ResourceTexture ICON = new ResourceTexture("assets/coffee/icon.png");
 
     void load() throws Throwable;

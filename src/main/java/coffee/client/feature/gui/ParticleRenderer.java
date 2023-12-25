@@ -74,7 +74,7 @@ public class ParticleRenderer {
         double y = 0;
         double velY = 0;
         double accelX = 0;
-        double accelY = -0.1;
+        double accelY = 0.1;
         long life = origLife;
         double circleRad = 1.5;
 
@@ -106,10 +106,9 @@ public class ParticleRenderer {
             long deltaOverall = Math.min(startDelta, endDelta);
             double pk = deltaOverall / (double) fadeTime;
             pk = Transitions.easeOutExpo(pk);
-            Theme theme = ThemeManager.getMainTheme();
             stack.push();
             double radToUse = pk * circleRad;
-            Renderer.R2D.renderCircle(stack, Renderer.Util.lerp(theme.getAccent(), DYING, pk), x - radToUse / 2d, y - radToUse / 2d, radToUse, 30);
+            Renderer.R2D.renderCircle(stack, Renderer.Util.lerp(new Color(240,240, 240, 255), DYING, pk), x - radToUse / 2d, y - radToUse / 2d, radToUse, 30);
             stack.pop();
         }
 

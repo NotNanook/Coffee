@@ -37,10 +37,8 @@ import java.util.UUID;
 
 public class HomeScreen extends AAScreen {
     static final double padding = 6;
-    static String changelog = "";
     private static HomeScreen instance;
     final ParticleRenderer prend = new ParticleRenderer(600);
-    final FontAdapter propFr = FontRenderers.getCustomSize(22);
     Texture currentAccountTexture = new Texture("dynamic/tex_currentaccount_home");
     boolean loaded = false;
     boolean currentAccountTextureLoaded = false;
@@ -61,13 +59,7 @@ public class HomeScreen extends AAScreen {
     void load() {
         loaded = true;
         try {
-            HomeScreen.changelog = IOUtils.toString(
-                Objects.requireNonNull(HomeScreen.class.getClassLoader().getResourceAsStream("changelogLatest.txt")),
-                StandardCharsets.UTF_8
-            );
-            updateCurrentAccount(() -> {
-
-            });
+            updateCurrentAccount(() -> {});
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -117,8 +109,7 @@ public class HomeScreen extends AAScreen {
         }
         initWidgets();
         if (loaded) {
-            updateCurrentAccount(() -> {
-            }); // already loaded this instance, refresh on the fly
+            updateCurrentAccount(() -> {}); // already loaded this instance, refresh on the fly
         } else {
             load();
         }
@@ -144,20 +135,13 @@ public class HomeScreen extends AAScreen {
         RenderSystem.defaultBlendFunc();
         prend.render(stack);
 
-        propFr.drawString(stack, "Changelog", 6, 6, 0xFFFFFF, false);
-        double yoff = 6 + propFr.getMarginHeight();
-        for (String s : changelog.split("\n")) {
-            FontRenderers.getRenderer().drawString(stack, s, 6, (float) yoff, 0xAAAAAA, false);
-            yoff += FontRenderers.getRenderer().getMarginHeight();
-        }
-
         double origW = 1024, origH = 1024;
         double newH = 20;
         double per = newH / origH;
         double newW = origW * per;
         Renderer.R2D.renderRoundedQuadWithShadow(
             stack,
-            new Color(0, 0, 10, 200),
+            new Color(0, 0, 0, 200),
             padding,
             height - padding - padding - 20 - padding,
             width - padding,

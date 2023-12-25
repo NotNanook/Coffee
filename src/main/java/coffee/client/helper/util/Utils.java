@@ -24,6 +24,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.nbt.StringNbtReader;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.c2s.play.PlayerInteractBlockC2SPacket;
@@ -33,6 +34,7 @@ import net.minecraft.text.OrderedText;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.text.TextColor;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.HitResult;
@@ -54,19 +56,7 @@ import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
-import java.util.AbstractMap;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Base64;
-import java.util.BitSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Queue;
-import java.util.Spliterator;
-import java.util.UUID;
+import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.function.BooleanSupplier;
@@ -75,6 +65,8 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
+
+import static coffee.client.CoffeeMain.client;
 
 public class Utils {
 
@@ -94,21 +86,46 @@ public class Utils {
         }
     }
 
+    public static final Set<Item> buckets = Set.of(
+            Items.WATER_BUCKET, Items.AXOLOTL_BUCKET, Items.COD_BUCKET, Items.PUFFERFISH_BUCKET, Items.SALMON_BUCKET, Items.TADPOLE_BUCKET, Items.TROPICAL_FISH_BUCKET
+    );
+
+    public static void doPlacement(Item item, Hand hand, BlockHitResult hitResult) {
+        if(buckets.contains(item)) {
+            ActionResult actionResult = client.interactionManager.interactItem(client.player, hand);
+            if (!actionResult.isAccepted() || !actionResult.shouldSwingHand()) {
+                System.out.println(actionResult.isAccepted());
+                return;
+            }
+
+            client.player.swingHand(hand);
+            client.gameRenderer.firstPersonRenderer.resetEquipProgress(hand);
+        } else {
+            ActionResult interactionResult = client.interactionManager.interactBlock(client.player, Hand.MAIN_HAND, hitResult);
+            if (!interactionResult.isAccepted() || !interactionResult.shouldSwingHand()) {
+                return;
+            }
+
+            client.player.swingHand(hand);
+            client.gameRenderer.firstPersonRenderer.resetEquipProgress(hand);
+        }
+    }
+
     public static Stream<LivingEntity> findEntities(Predicate<? super LivingEntity> requirement) {
-        Spliterator<Entity> spliterator = CoffeeMain.client.world.getEntities().spliterator();
+        Spliterator<Entity> spliterator = client.world.getEntities().spliterator();
 
         return StreamSupport.stream(spliterator, false)
-            .filter(entity -> !entity.equals(CoffeeMain.client.player))
+            .filter(entity -> !entity.equals(client.player))
             .filter(entity -> entity instanceof LivingEntity)
             .map(entity -> (LivingEntity) entity)
             .filter(requirement);
     }
 
     public static boolean isABFree(Vec3d a, Vec3d b) {
-        assert CoffeeMain.client.player != null;
-        assert CoffeeMain.client.world != null;
-        RaycastContext rc = new RaycastContext(a, b, RaycastContext.ShapeType.COLLIDER, RaycastContext.FluidHandling.NONE, CoffeeMain.client.player);
-        BlockHitResult raycast = CoffeeMain.client.world.raycast(rc);
+        assert client.player != null;
+        assert client.world != null;
+        RaycastContext rc = new RaycastContext(a, b, RaycastContext.ShapeType.COLLIDER, RaycastContext.FluidHandling.NONE, client.player);
+        BlockHitResult raycast = client.world.raycast(rc);
         return raycast.getType() == HitResult.Type.MISS;
     }
 
@@ -218,12 +235,12 @@ public class Utils {
 
     public static void sendPacketNoEvent(Packet<?> packet) {
         sendPackets = false;
-        CoffeeMain.client.player.networkHandler.sendPacket(packet);
+        client.player.networkHandler.sendPacket(packet);
         sendPackets = true;
     }
 
     public static void setClientTps(float tps) {
-        IRenderTickCounterMixin accessor = (IRenderTickCounterMixin) ((IMinecraftClientMixin) CoffeeMain.client).getRenderTickCounter();
+        IRenderTickCounterMixin accessor = (IRenderTickCounterMixin) ((IMinecraftClientMixin) client).getRenderTickCounter();
         accessor.setTickTime(1000f / tps);
     }
 
@@ -234,7 +251,7 @@ public class Utils {
     public static Vec3d getInterpolatedEntityPosition(Entity entity) {
         Vec3d a = entity.getPos();
         Vec3d b = new Vec3d(entity.prevX, entity.prevY, entity.prevZ);
-        float p = CoffeeMain.client.getTickDelta();
+        float p = client.getTickDelta();
         return new Vec3d(MathHelper.lerp(p, b.x, a.x), MathHelper.lerp(p, b.y, a.y), MathHelper.lerp(p, b.z, a.z));
     }
 
@@ -317,7 +334,7 @@ public class Utils {
             ByteBuffer data = BufferUtils.createByteBuffer(content.length).put(content);
             data.flip();
             NativeImageBackedTexture tex = new NativeImageBackedTexture(NativeImage.read(data));
-            CoffeeMain.client.execute(() -> CoffeeMain.client.getTextureManager().registerTexture(i, tex));
+            client.execute(() -> client.getTextureManager().registerTexture(i, tex));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -394,26 +411,26 @@ public class Utils {
 
         public static void drop(int index) {
             int translatedSlotId = slotIndexToId(index);
-            Objects.requireNonNull(CoffeeMain.client.interactionManager)
+            Objects.requireNonNull(client.interactionManager)
                 .clickSlot(
-                    Objects.requireNonNull(CoffeeMain.client.player).currentScreenHandler.syncId,
+                    Objects.requireNonNull(client.player).currentScreenHandler.syncId,
                     translatedSlotId,
                     1,
                     SlotActionType.THROW,
-                    CoffeeMain.client.player
+                    client.player
                 );
         }
 
         public static void moveStackToOther(int slotIdFrom, int slotIdTo) {
-            Objects.requireNonNull(CoffeeMain.client.interactionManager)
-                .clickSlot(0, slotIdFrom, 0, SlotActionType.PICKUP, CoffeeMain.client.player); // pick up item from stack
-            CoffeeMain.client.interactionManager.clickSlot(0, slotIdTo, 0, SlotActionType.PICKUP, CoffeeMain.client.player); // put item to target
-            CoffeeMain.client.interactionManager.clickSlot(
+            Objects.requireNonNull(client.interactionManager)
+                .clickSlot(0, slotIdFrom, 0, SlotActionType.PICKUP, client.player); // pick up item from stack
+            client.interactionManager.clickSlot(0, slotIdTo, 0, SlotActionType.PICKUP, client.player); // put item to target
+            client.interactionManager.clickSlot(
                 0,
                 slotIdFrom,
                 0,
                 SlotActionType.PICKUP,
-                CoffeeMain.client.player
+                client.player
             ); // (in case target slot had item) put item from target back to from
         }
     }
@@ -456,11 +473,11 @@ public class Utils {
     public static class Mouse {
 
         public static double getMouseX() {
-            return CoffeeMain.client.mouse.getX() / CoffeeMain.client.getWindow().getScaleFactor();
+            return client.mouse.getX() / client.getWindow().getScaleFactor();
         }
 
         public static double getMouseY() {
-            return CoffeeMain.client.mouse.getY() / CoffeeMain.client.getWindow().getScaleFactor();
+            return client.mouse.getY() / client.getWindow().getScaleFactor();
         }
     }
 
@@ -468,7 +485,7 @@ public class Utils {
     public static class Packets {
 
         public static PlayerInteractBlockC2SPacket generatePlace(BlockPos pos) {
-            PendingUpdateManager pendingUpdateManager = getUpdateManager(CoffeeMain.client.world).incrementSequence();
+            PendingUpdateManager pendingUpdateManager = getUpdateManager(client.world).incrementSequence();
 
             var packet = new PlayerInteractBlockC2SPacket(
                 Hand.MAIN_HAND,
@@ -522,15 +539,15 @@ public class Utils {
                 .append(Text.literal("]").styled(style -> style.withColor(0x454545)))
                 .append(" ")
                 .append(t);
-            return ((ChatHudDuck) CoffeeMain.client.inGameHud.getChatHud()).coffee_addChatMessage(append);
+            return ((ChatHudDuck) client.inGameHud.getChatHud()).coffee_addChatMessage(append);
         }
 
         public static void removeMessage(int v) {
-            ((ChatHudDuck) CoffeeMain.client.inGameHud.getChatHud()).coffee_removeChatMessage(v);
+            ((ChatHudDuck) client.inGameHud.getChatHud()).coffee_removeChatMessage(v);
         }
 
         static void sendMessages() {
-            if (CoffeeMain.client.player != null) {
+            if (client.player != null) {
                 Text next;
                 while ((next = messageQueue.poll()) != null) {
                     sendMessage(next);

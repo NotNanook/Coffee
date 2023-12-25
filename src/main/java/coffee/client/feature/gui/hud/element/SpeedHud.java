@@ -55,7 +55,7 @@ public class SpeedHud extends HudElement {
 
                 Renderer.R2D.renderLine(
                     stack,
-                    Renderer.Util.lerp(ThemeManager.getMainTheme().getActive(), ThemeManager.getMainTheme().getAccent(), ppr),
+                    Renderer.Util.lerp(ThemeManager.getMainTheme().getActive(), ThemeManager.getMainTheme().getSpeed(), ppr),
                     x - incrX,
                     previous,
                     x,
