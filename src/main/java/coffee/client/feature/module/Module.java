@@ -21,7 +21,7 @@ import net.minecraft.text.Text;
 
 import java.lang.annotation.Annotation;
 
-public abstract class Module {
+public abstract class Module implements Comparable<Module> {
 
     protected static final MinecraftClient client = CoffeeMain.client;
     static int lastNotification = -1;
@@ -118,4 +118,7 @@ public abstract class Module {
         }
     }
 
+    @Override public int compareTo(Module otherModule) {
+        return this.name.compareTo(otherModule.name);
+    }
 }

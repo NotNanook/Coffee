@@ -68,9 +68,6 @@ public class TargetHud extends Module {
         if (!isValidEntityName) {
             return false;
         }
-        if (check == CoffeeMain.client.player) {
-            return false;
-        }
         return check.getType() == EntityType.PLAYER && check instanceof PlayerEntity;
     }
 
@@ -84,7 +81,7 @@ public class TargetHud extends Module {
             .filter(this::isApplicable)
             .sorted(Comparator.comparingDouble(value -> value.getPos().distanceTo(Objects.requireNonNull(CoffeeMain.client.player).getPos())))
             .toList();
-        if (entitiesQueue.size() > 0) {
+        if (!entitiesQueue.isEmpty()) {
             e = entitiesQueue.get(0);
         } else {
             e = null;

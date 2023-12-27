@@ -50,33 +50,7 @@ import coffee.client.feature.module.impl.misc.Test;
 import coffee.client.feature.module.impl.misc.Timer;
 import coffee.client.feature.module.impl.misc.XCarry;
 import coffee.client.feature.module.impl.movement.*;
-import coffee.client.feature.module.impl.render.BlockHighlighting;
-import coffee.client.feature.module.impl.render.CaveMapper;
-import coffee.client.feature.module.impl.render.ClickGUI;
-import coffee.client.feature.module.impl.render.ESP;
-import coffee.client.feature.module.impl.render.FakeHacker;
-import coffee.client.feature.module.impl.render.FreeLook;
-import coffee.client.feature.module.impl.render.Freecam;
-import coffee.client.feature.module.impl.render.Fullbright;
-import coffee.client.feature.module.impl.render.Hud;
-import coffee.client.feature.module.impl.render.ItemByteSize;
-import coffee.client.feature.module.impl.render.LSD;
-import coffee.client.feature.module.impl.render.MouseEars;
-import coffee.client.feature.module.impl.render.NameTags;
-import coffee.client.feature.module.impl.render.NoLiquidFog;
-import coffee.client.feature.module.impl.render.NoMessageIndicators;
-import coffee.client.feature.module.impl.render.Radar;
-import coffee.client.feature.module.impl.render.ShowTntPrime;
-import coffee.client.feature.module.impl.render.Spotlight;
-import coffee.client.feature.module.impl.render.StorageHighlighter;
-import coffee.client.feature.module.impl.render.SuperheroFX;
-import coffee.client.feature.module.impl.render.TabGui;
-import coffee.client.feature.module.impl.render.TargetHud;
-import coffee.client.feature.module.impl.render.Tracers;
-import coffee.client.feature.module.impl.render.Trail;
-import coffee.client.feature.module.impl.render.UnfocusedCpu;
-import coffee.client.feature.module.impl.render.Waypoints;
-import coffee.client.feature.module.impl.render.Zoom;
+import coffee.client.feature.module.impl.render.*;
 import coffee.client.feature.module.impl.world.AirPlace;
 import coffee.client.feature.module.impl.world.Annihilator;
 import coffee.client.feature.module.impl.world.AnyPlacer;
@@ -99,10 +73,12 @@ import coffee.client.feature.module.impl.world.Nuker;
 import coffee.client.feature.module.impl.world.Scaffold;
 import coffee.client.feature.module.impl.world.SurvivalNuker;
 import coffee.client.feature.module.impl.world.XRAY;
+import lombok.Getter;
 import org.apache.logging.log4j.Level;
 
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -111,15 +87,12 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ModuleRegistry {
     static final List<Module> vanillaModules = new ArrayList<>();
+    @Getter
     static final List<AddonModuleEntry> customModules = new ArrayList<>();
     static final List<Module> sharedModuleList = new CopyOnWriteArrayList<>();
     static final AtomicBoolean reloadInProgress = new AtomicBoolean(false);
     static final AtomicBoolean initialized = new AtomicBoolean(false);
     static final Map<Class<? extends Module>, Module> cachedModuleClassMap = new ConcurrentHashMap<>();
-
-    public static List<AddonModuleEntry> getCustomModules() {
-        return customModules;
-    }
 
     public static void registerAddonModule(Addon source, Module module) {
         for (AddonModuleEntry customModule : customModules) {
@@ -150,6 +123,7 @@ public class ModuleRegistry {
         for (AddonModuleEntry customModule : customModules) {
             sharedModuleList.add(customModule.module);
         }
+        Collections.sort(sharedModuleList);
         reloadInProgress.set(false);
     }
 
@@ -307,12 +281,14 @@ public class ModuleRegistry {
         registerModule(Angryman.class);
         registerModule(UnfocusedCpu.class);
         registerModule(AutoMLG.class);
+        registerModule(CameraClip.class);
 
         rebuildSharedModuleList();
 
         for (Module module : getModules()) {
             module.postModuleInit();
         }
+
         CoffeeMain.log(Level.INFO, "Initialized modules. Vanilla modules:", vanillaModules.size(), "Addon modules:", customModules.size());
     }
 

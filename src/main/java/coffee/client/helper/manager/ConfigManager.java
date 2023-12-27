@@ -134,7 +134,7 @@ public class ConfigManager {
                     if (jsonElement.isJsonObject()) {
                         JsonObject jsonObj = jsonElement.getAsJsonObject();
                         String name = jsonObj.get("name").getAsString();
-                        Module j = ModuleRegistry.getByName(name);
+                        Module j = ModuleRegistry.getByName(name); // This is also the place where all modules get initialized
                         if (j == null) {
                             continue;
                         }
