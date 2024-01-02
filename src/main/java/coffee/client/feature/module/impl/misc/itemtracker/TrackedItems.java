@@ -1,6 +1,8 @@
 package coffee.client.feature.module.impl.misc.itemtracker;
 
+import coffee.client.helper.event.impl.LoreQueryEvent;
 import coffee.client.helper.util.LimitedSizeList;
+import me.x150.jmessenger.MessageSubscription;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.*;

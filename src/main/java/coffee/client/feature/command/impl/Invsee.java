@@ -23,6 +23,7 @@ import net.minecraft.client.gui.screen.ingame.InventoryScreen;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 
@@ -76,10 +77,11 @@ public class Invsee extends Command {
                 dummyInventory.insertStack(item.itemStack.copy());
             }
 
+            ItemTracker.setCurrentInventory(items);
             Utils.TickManager.runOnNextRender(() -> CoffeeMain.client.setScreen(new NoInteractInventory(dummy)));
         } else {
             PlayerEntity player = new PlayerFromNameArgumentParser(true).parse(args[0]);
-            Utils.TickManager.runOnNextRender(() -> CoffeeMain.client.setScreen(new InventoryScreen(player)));
+            Utils.TickManager.runOnNextRender(() -> CoffeeMain.client.setScreen(new NoInteractInventory(player)));
         }
     }
 }
