@@ -12,11 +12,21 @@ import coffee.client.feature.command.coloring.ArgumentType;
 import coffee.client.feature.command.coloring.PossibleArgument;
 import coffee.client.feature.command.coloring.StaticArgumentServer;
 import coffee.client.feature.command.exception.CommandException;
+import coffee.client.feature.module.ModuleRegistry;
+import coffee.client.feature.module.impl.misc.ItemTracker;
+import coffee.client.feature.module.impl.misc.itemtracker.DummyPlayerEntity;
+import coffee.client.feature.module.impl.misc.itemtracker.ItemStackWrapper;
+import coffee.client.feature.module.impl.misc.itemtracker.NoInteractInventory;
+import coffee.client.feature.module.impl.misc.itemtracker.TrackedItems;
 import coffee.client.helper.util.Utils;
 import net.minecraft.client.gui.screen.ingame.InventoryScreen;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 
-import java.util.Objects;
+import java.util.*;
 
 public class Invsee extends Command {
 
@@ -43,7 +53,33 @@ public class Invsee extends Command {
     @Override
     public void onExecute(String[] args) throws CommandException {
         validateArgumentsLength(args, 1, "Provide target username");
-        PlayerEntity t = new PlayerFromNameArgumentParser(true).parse(args[0]);
-        Utils.TickManager.runOnNextRender(() -> CoffeeMain.client.setScreen(new InventoryScreen(t)));
+        if(ModuleRegistry.getByClass(ItemTracker.class).isEnabled()) {
+            String playerName = args[0].toLowerCase();
+            if(!ItemTracker.getPlayerMap().containsKey(playerName)) {
+                throw new CommandException("Invalid argument \"" + playerName + "\": Player not found");
+            }
+
+            DummyPlayerEntity dummy = new DummyPlayerEntity(client.world, playerName);
+            PlayerInventory dummyInventory = dummy.getInventory();
+            TrackedItems trackedItems = ItemTracker.getPlayerMap().get(playerName);
+
+            EnumMap<EquipmentSlot, ItemStack> armorItems = trackedItems.armorItems;
+            ArrayList<ItemStackWrapper> items = trackedItems.storageItems.elements;
+            Collections.sort(items);
+
+            dummyInventory.armor.set(0, armorItems.get(EquipmentSlot.FEET).copy());
+            dummyInventory.armor.set(1, armorItems.get(EquipmentSlot.LEGS).copy());
+            dummyInventory.armor.set(2, armorItems.get(EquipmentSlot.CHEST).copy());
+            dummyInventory.armor.set(3, armorItems.get(EquipmentSlot.HEAD).copy());
+
+            for(ItemStackWrapper item : items) {
+                dummyInventory.insertStack(item.itemStack.copy());
+            }
+
+            Utils.TickManager.runOnNextRender(() -> CoffeeMain.client.setScreen(new NoInteractInventory(dummy)));
+        } else {
+            PlayerEntity player = new PlayerFromNameArgumentParser(true).parse(args[0]);
+            Utils.TickManager.runOnNextRender(() -> CoffeeMain.client.setScreen(new InventoryScreen(player)));
+        }
     }
 }

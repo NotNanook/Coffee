@@ -31,24 +31,7 @@ import coffee.client.feature.module.impl.exploit.OffhandCrash;
 import coffee.client.feature.module.impl.exploit.PingSpoof;
 import coffee.client.feature.module.impl.exploit.ResourcePackSpoof;
 import coffee.client.feature.module.impl.exploit.Robowalk;
-import coffee.client.feature.module.impl.misc.AdBlock;
-import coffee.client.feature.module.impl.misc.AllowFormatCodes;
-import coffee.client.feature.module.impl.misc.Angryman;
-import coffee.client.feature.module.impl.misc.AntiCrash;
-import coffee.client.feature.module.impl.misc.AntiOffhandCrash;
-import coffee.client.feature.module.impl.misc.AntiPacketKick;
-import coffee.client.feature.module.impl.misc.ChestIndexer;
-import coffee.client.feature.module.impl.misc.ClientSettings;
-import coffee.client.feature.module.impl.misc.DiscordRPC;
-import coffee.client.feature.module.impl.misc.GamemodeAlert;
-import coffee.client.feature.module.impl.misc.InfChatLength;
-import coffee.client.feature.module.impl.misc.MoreChatHistory;
-import coffee.client.feature.module.impl.misc.NoTitles;
-import coffee.client.feature.module.impl.misc.PortalGUI;
-import coffee.client.feature.module.impl.misc.SpinAutism;
-import coffee.client.feature.module.impl.misc.Test;
-import coffee.client.feature.module.impl.misc.Timer;
-import coffee.client.feature.module.impl.misc.XCarry;
+import coffee.client.feature.module.impl.misc.*;
 import coffee.client.feature.module.impl.movement.*;
 import coffee.client.feature.module.impl.render.*;
 import coffee.client.feature.module.impl.world.AirPlace;
@@ -282,6 +265,7 @@ public class ModuleRegistry {
         registerModule(UnfocusedCpu.class);
         registerModule(AutoMLG.class);
         registerModule(CameraClip.class);
+        registerModule(ItemTracker.class);
 
         rebuildSharedModuleList();
 
